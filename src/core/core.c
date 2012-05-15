@@ -33,7 +33,27 @@ void setCube() {
 				} else {
 					*cubeRef[x][y][z] &= ~(pinMask[x][y]);
 				}	
+			}
 		}
 	}
 }
+
+void clearCube() {
+
+	int x;
+	int y;
+	int z;
+
+	//TODO replace limit with constants
+	for(z=0;z<=3;z++) {
+		for(y=0;y<=3;y++) {
+			for(x=0;x<=3;x++) {
+			
+			cube[x][y][z] = 0;		
+		}
+	}
+
+	setCube();
+}
+
 }

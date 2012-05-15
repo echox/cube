@@ -1,2 +1,3 @@
 
 void setCube();
+void clearCube();
