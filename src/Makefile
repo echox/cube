@@ -1,5 +1,5 @@
 PRG            = cube
-OBJ            = cube.o 
+OBJ            = cube.o core/config.o core/core.o
 #MCU_TARGET     = atmega16
 #MCU		= atmega16
 MCU_TARGET	= atmega32
