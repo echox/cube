@@ -6,7 +6,7 @@
 #include "core/core.h"
 
 void draw() {
-	setCube();
+	drawCube();
 }
 
 int main() {
@@ -18,12 +18,25 @@ int b;
 int c;
 
 	while (1) {
+
+		int c;
+		for (c=0;c<=2;c++) {
+		delay(10);
+		fullCube();
+		delay(5);
+		clearCube();
+		delay(5);
+		fullCube();
+		delay(5);
+		clearCube();
+		}
+
 		for(c=0;c<=3;c++) {
 		for(b=0;b<=3;b++) {
 		for(a=0;a<=3;a++) {
 		cube[a][b][c] = 1;
 		draw();
-		_delay_ms(200);
+		delay(2);
 		}
 		}
 		}
@@ -34,7 +47,7 @@ int c;
 		for(a=3;a>=0;a--) {
 		cube[a][b][c] = 0;
 		draw();
-		_delay_ms(200);
+		delay(2);
 		}
 		}
 		}
