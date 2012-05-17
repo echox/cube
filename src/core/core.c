@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/delay.h>
 
 #include "config.h"
 #include "core.h"
@@ -17,7 +18,7 @@ if (count++ == 3)
         count = 0;
 }
 
-void setCube() {
+void drawCube() {
 
 	int x;
 	int y;
@@ -38,6 +39,29 @@ void setCube() {
 	}
 }
 
+void toogleVoxel(char x, char y, char z) {
+	cube[x][y][z] = ~(cube[x][y][z]);
+	drawCube();
+}
+
+void fullCube() {
+
+	int x;
+	int y;
+	int z;
+
+	//TODO replace limit with constants
+	for(z=0;z<=3;z++) {
+		for(y=0;y<=3;y++) {
+			for(x=0;x<=3;x++) {
+				cube[x][y][z] = 1;
+			}
+		}
+	}
+
+	drawCube();
+}
+
 void clearCube() {
 
 	int x;
@@ -48,12 +72,16 @@ void clearCube() {
 	for(z=0;z<=3;z++) {
 		for(y=0;y<=3;y++) {
 			for(x=0;x<=3;x++) {
-			
-			cube[x][y][z] = 0;		
+				cube[x][y][z] = 0;		
+			}
 		}
 	}
-
-	setCube();
+	
+	drawCube();
 }
 
+void delay(int sec) {
+
+	for (; sec > 0; sec--)
+		_delay_ms(100);
 }
