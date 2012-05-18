@@ -7,6 +7,21 @@
 
 volatile unsigned char count;
 
+volatile char set;
+
+ISR(INT2_vect) {
+
+if(!set) {
+fullCube();
+set = 1;
+} else {
+set =0;
+clearCube();
+
+}
+
+}
+
 ISR(TIMER2_COMP_vect) {
 
 PORTD = 0;

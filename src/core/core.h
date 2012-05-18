@@ -2,5 +2,5 @@
 void drawCube();
 void fullCube();
 void clearCube();
-void toogleVoxel();
+void toogleVoxel(char x, char y, char z);
 void delay(int ms);
