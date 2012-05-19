@@ -4,57 +4,43 @@
 
 #include "core/config.h"
 #include "core/core.h"
+#include "core/patterns.c"
 
 void draw() {
 	drawCube();
 }
 
+void (*funct[3]) ();
+char btn;
+
+
+ISR(INT2_vect) {
+
+ir = 1;
+
+if (btn++ == 2)
+	btn = 0;
+}
+
+
 int main() {
 
 init();
 
-int a;
-int b;
-int c;
+//int a;
+//int b;
+//int c;
+
+funct[0] = &sleep;
+funct[1] = &fillAndEmptyCube;
+funct[2] = &flashCube;
+btn = 0;
 
 	while (1) {
 
-		int c;
-		for (c=0;c<=2;c++) {
-		delay(10);
-		fullCube();
-		delay(5);
-		clearCube();
-		delay(5);
-		fullCube();
-		delay(5);
-		clearCube();
-		}
-
-		for(c=0;c<=3;c++) {
-		for(b=0;b<=3;b++) {
-		for(a=0;a<=3;a++) {
-		cube[a][b][c] = 1;
-		draw();
-		delay(2);
-		}
-		}
-		}
-
-
-		for(c=3;c>=0;c--) {
-		for(b=3;b>=0;b--) {
-		for(a=3;a>=0;a--) {
-		cube[a][b][c] = 0;
-		draw();
-		delay(2);
-		}
-		}
-		}
-
-
-		_delay_ms(2000);
-		
+	(*funct[btn])();
+	ir = 0;
+/*
 		a=0;
 		b=0;
 		c=0;
@@ -276,6 +262,6 @@ int k;
 clearCube();
 draw();
 _delay_ms(2000);
-
+*/
 	}
 }

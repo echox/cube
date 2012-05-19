@@ -7,21 +7,6 @@
 
 volatile unsigned char count;
 
-volatile char set;
-
-ISR(INT2_vect) {
-
-if(!set) {
-fullCube();
-set = 1;
-} else {
-set =0;
-clearCube();
-
-}
-
-}
-
 ISR(TIMER2_COMP_vect) {
 
 PORTD = 0;
@@ -99,4 +84,10 @@ void delay(int sec) {
 
 	for (; sec > 0; sec--)
 		_delay_ms(100);
+}
+
+void sleep() {
+
+	//TODO enter real sleep mode?
+	_delay_ms(400);
 }

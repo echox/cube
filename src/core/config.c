@@ -114,6 +114,8 @@ OCR2 = 0xFF;
 TCCR2 = 0x05;
 TCCR2 |= (1 << WGM01);
 
+MCUCSR |= (0 << ISC2);
+GICR |= (1 << INT2);
 sei();
 
 }
