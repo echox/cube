@@ -10,7 +10,7 @@ void draw() {
 	drawCube();
 }
 
-void (*funct[3]) ();
+void (*funct[4]) ();
 char btn;
 
 
@@ -18,7 +18,7 @@ ISR(INT2_vect) {
 
 ir = 1;
 
-if (btn++ == 2)
+if (btn++ == 3)
 	btn = 0;
 }
 
@@ -32,8 +32,9 @@ init();
 //int c;
 
 funct[0] = &sleep;
-funct[1] = &fillAndEmptyCube;
-funct[2] = &flashCube;
+funct[1] = &circle;
+funct[2] = &fillAndEmptyCube;
+funct[3] = &flashCube;
 btn = 0;
 
 	while (1) {
