@@ -11,3 +11,5 @@ Mapping between the microcontroller output pins and the library can be configure
 
 **Note:** At the moment this is under high development and may completly change. Not even near stable.
 See http://www.instructables.com/id/LED-Cube-4x4x4/ for reliable code :-).
+
+License: ISC (equivalent to 2-clause BSD license)
